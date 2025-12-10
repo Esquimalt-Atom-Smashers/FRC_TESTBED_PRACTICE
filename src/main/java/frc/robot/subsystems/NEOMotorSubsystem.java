@@ -17,12 +17,12 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.SparkBase.ControlType;
 
-public class MotorSubsystem extends SubsystemBase {
+public class NEOMotorSubsystem extends SubsystemBase {
 
-  /** Creates a new ExampleSubsystem. */
+
   private SparkMax neoMotor;
   private SparkClosedLoopController neoMotorController;
-  public MotorSubsystem() {
+  public NEOMotorSubsystem() {
     neoMotor = new SparkMax(3, MotorType.kBrushless);
     SparkMaxConfig neoMotorConfig = new SparkMaxConfig();
     neoMotorController = neoMotor.getClosedLoopController();
