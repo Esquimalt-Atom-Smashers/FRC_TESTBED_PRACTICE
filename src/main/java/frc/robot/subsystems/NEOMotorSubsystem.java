@@ -35,7 +35,7 @@ public class NEOMotorSubsystem extends SubsystemBase {
   }
 
 
-  public Command runNeoMotorVoltageCommand() {
+  public Command setMotorVoltageCommand(double Voltage) {
 
     return runOnce (
       () -> {
@@ -43,17 +43,11 @@ public class NEOMotorSubsystem extends SubsystemBase {
       });
   }
   
-  public Command runNeoMotorVelocityCommand() {
-    return runOnce(
-      () -> {
-        setTargetVelocity(0.2);
-      });
-  }
 
-  public Command runNeoMotorPositionCommand(double motorPosition) {
+  public Command setMotorPositionCommand(double Position) {
     return runOnce(
       () -> {
-        setTargetPosition(motorPosition);
+        setTargetPosition(Position);
       });
   }
   
