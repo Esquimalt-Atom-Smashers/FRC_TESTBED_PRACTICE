@@ -39,7 +39,7 @@ public class NEOMotorSubsystem extends SubsystemBase {
 
     return runOnce (
       () -> {
-        setTargetVoltage(1);
+        setTargetVoltage(Voltage);
       });
   }
   
