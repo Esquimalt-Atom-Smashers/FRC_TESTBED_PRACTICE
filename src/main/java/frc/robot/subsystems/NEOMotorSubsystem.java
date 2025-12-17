@@ -22,7 +22,7 @@ public class NEOMotorSubsystem extends SubsystemBase {
 
   private SparkMax neoMotor;
   private SparkClosedLoopController neoMotorController;
-  public NEOMotorSubsystem() {
+  public NEOMotorSubsystem () {
     neoMotor = new SparkMax(3, MotorType.kBrushless);
     SparkMaxConfig neoMotorConfig = new SparkMaxConfig();
     neoMotorController = neoMotor.getClosedLoopController();
@@ -65,7 +65,10 @@ public class NEOMotorSubsystem extends SubsystemBase {
     neoMotorController.setReference(voltage, ControlType.kVoltage);
     System.out.println("Setting voltage to: " + voltage);
   }
-
+  
+  public void disableMotor() {
+    setTargetVoltage(0);
+  }
 
   /**
    * Example command factory method.

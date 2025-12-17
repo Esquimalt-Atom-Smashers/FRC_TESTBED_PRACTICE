@@ -67,5 +67,9 @@ public class KRAKENMotorSubsystem extends SubsystemBase {
     krakenMotor.setControl(new VoltageOut(Voltage));
     System.out.println("Setting voltage to: " + Voltage);
   }
+
+  public void disableMotor() {
+    setTargetVoltage(0);
+  }
 }
 

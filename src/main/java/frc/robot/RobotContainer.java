@@ -10,7 +10,11 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.KRAKENMotorSubsystem;
 import frc.robot.subsystems.NEOMotorSubsystem;
+
+import java.util.List;
+
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -52,10 +56,14 @@ public class RobotContainer {
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-    m_driverController.b().whileTrue(NEOMotorSubsystem.setMotorVoltageCommand(4));
+    m_driverController.b().whileTrue(NEOMotorSubsystem.setMotorVoltageCommand(1));
     m_driverController.y().whileTrue(NEOMotorSubsystem.setMotorPositionCommand(2.0));
     m_driverController.a().whileTrue(krakenMotorSubsystem.setMotorPositionCommand(0));
     m_driverController.x().whileTrue(krakenMotorSubsystem.setMotorPositionCommand(100));
+  } 
+  public void disabledInit() {
+    NEOMotorSubsystem.disableMotor();
+    krakenMotorSubsystem.disableMotor();
   }
 
   /**
