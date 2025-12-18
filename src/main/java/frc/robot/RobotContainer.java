@@ -43,9 +43,12 @@ public class RobotContainer {
   private void configureBindings() {   
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(talonSubsystem.setPowerCommand(0.1));
-    m_driverController.a().whileTrue(talonSubsystem.setPowerCommand(-0.1));
+    m_driverController.b().onTrue(talonSubsystem.goToRelativePositionFromInitAndHold(-1000));
+    m_driverController.a().onTrue(talonSubsystem.goToRelativePositionFromInitAndHold(1000));
+    m_driverController.y().onTrue(talonSubsystem.goToRelativePositionFromInitAndHold(0));
     m_driverController.x().whileTrue(talonSubsystem.setPowerCommand(0.0));
+    m_driverController.start().onTrue(talonSubsystem.goToAbsPositionHold(0.5));
+    m_driverController.back().onTrue(talonSubsystem.goToAbsPositionHold(0.0));
   }
 
   /**
