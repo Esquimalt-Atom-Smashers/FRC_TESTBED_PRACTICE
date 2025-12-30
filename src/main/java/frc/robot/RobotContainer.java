@@ -10,6 +10,7 @@ import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.KRAKENMotorSubsystem;
 import frc.robot.subsystems.NEOMotorSubsystem;
+import frc.robot.subsystems.TalonBrushedSubsystem;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final NEOMotorSubsystem NEOMotorSubsystem = new NEOMotorSubsystem();
+  private final TalonBrushedSubsystem talonMotorSubsystem = new TalonBrushedSubsystem();
   private final KRAKENMotorSubsystem krakenMotorSubsystem = new KRAKENMotorSubsystem();
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -60,6 +62,8 @@ public class RobotContainer {
     m_driverController.y().whileTrue(NEOMotorSubsystem.setMotorPositionCommand(2.0));
     m_driverController.a().whileTrue(krakenMotorSubsystem.setMotorPositionCommand(0));
     m_driverController.x().whileTrue(krakenMotorSubsystem.setMotorPositionCommand(100));
+    m_driverController.leftBumper().whileTrue(talonMotorSubsystem.setPowerCommand(1));
+    m_driverController.rightBumper().whileTrue(talonMotorSubsystem.setPowerCommand(0));
   } 
   public void disabledInit() {
     NEOMotorSubsystem.disableMotor();
