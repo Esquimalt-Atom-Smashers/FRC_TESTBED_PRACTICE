@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.SameSpeedCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.KRAKENMotorSubsystem;
 import frc.robot.subsystems.NEOMotorSubsystem;
@@ -58,9 +59,12 @@ public class RobotContainer {
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     //m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-    m_driverController.b().whileTrue(NEOMotorSubsystem.setMotorVoltageCommand(1));
-    m_driverController.y().whileTrue(NEOMotorSubsystem.setMotorPositionCommand(2.0));
-    m_driverController.a().whileTrue(krakenMotorSubsystem.setMotorPositionCommand(0));
+    m_driverController.b().whileTrue(NEOMotorSubsystem.setNEOMotorVoltageCommand(1));
+    m_driverController.y().whileTrue(NEOMotorSubsystem.setNEOMotorPositionCommand(2.0));
+    
+    m_driverController.a().whileTrue(new SameSpeedCommand(NEOMotorSubsystem,krakenMotorSubsystem,talonMotorSubsystem,
+    0.5,0.5,0.5));
+
     m_driverController.x().whileTrue(krakenMotorSubsystem.setMotorPositionCommand(100));
     m_driverController.leftBumper().whileTrue(talonMotorSubsystem.setPowerCommand(1));
     m_driverController.rightBumper().whileTrue(talonMotorSubsystem.setPowerCommand(0));

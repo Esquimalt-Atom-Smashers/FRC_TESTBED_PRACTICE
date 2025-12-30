@@ -21,7 +21,7 @@ public class TalonBrushedSubsystem extends SubsystemBase {
         talonMotor.configFactoryDefault();
 
         // can reverse motor direction if needed
-        talonMotor.setInverted(false);
+        talonMotor.setInverted(true);
         printTimer.start();
     }
 
